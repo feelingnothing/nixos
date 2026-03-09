@@ -6,7 +6,7 @@
       location = "right";
       hiding = "dodgewindows";
       lengthMode = "fit";
-      height = 1920 / 5;
+      height = 300;
 
       widgets = [
         {

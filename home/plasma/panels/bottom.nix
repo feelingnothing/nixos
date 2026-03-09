@@ -4,7 +4,9 @@
   programs.plasma.panels = [
     {
       location = "bottom";
+      floating = false;
       height = 40;
+      hiding = "none";
       widgets = [
         {
           kickoff = {

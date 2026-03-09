@@ -4,7 +4,6 @@
   pkgs,
   ...
 }:
-
 {
   imports = [
     ./modules/alacritty.nix
@@ -37,9 +36,7 @@
     enable = true;
 
     remotes.onedrive = {
-      config = {
-        type = "onedrive";
-      };
+      config.type = "onedrive";
 
       mounts."" = {
         enable = true;

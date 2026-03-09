@@ -218,6 +218,9 @@ in
 
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
+      OfferToSaveLogins = false;
+      PasswordManagerEnabled = false;
+      DisableMasterPasswordCreation = true;
       HttpsOnlyMode = "force_enabled";
       SSLVersionMin = "tls1.2";
       PostQuantumKeyAgreementEnabled = true;
@@ -264,6 +267,7 @@ in
 
         "browser.formfill.enable" = false;
         "pdfjs.enableScripting" = false;
+        "signon.rememberSignons" = false;
         "signon.autofillForms" = false;
         "signon.formlessCapture.enabled" = false;
         "dom.disable_window_move_resize" = true;
