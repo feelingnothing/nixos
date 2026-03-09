@@ -37,4 +37,6 @@
       _launch = "none";
     };
   };
+
+  programs.plasma.spectacle.shortcuts.captureRectangularRegion = "Meta+/";
 }

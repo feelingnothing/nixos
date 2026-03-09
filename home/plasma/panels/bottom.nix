@@ -4,9 +4,25 @@
   programs.plasma.panels = [
     {
       location = "bottom";
-      floating = false;
-      height = 40;
-      hiding = "none";
+      extraSettings = ''
+        panel.height = 34;
+        panel.alignment = "center";
+        panel.hiding = "windowsgobelow";
+        panel.lengthMode = "fit";
+        panel.offset = 0;
+        panel.floating = false;
+
+        const panelViews = new ConfigFile("plasmashellrc", "PlasmaViews");
+        const panelView = new ConfigFile(panelViews, "Panel " + panel.id);
+        const panelDefaults = new ConfigFile(panelView, "Defaults");
+
+        panelView.writeEntry("alignment", 132);
+        panelView.writeEntry("panelVisibility", 3);
+        panelView.writeEntry("panelLengthMode", 1);
+        panelView.writeEntry("floating", 0);
+        panelDefaults.writeEntry("thickness", 34);
+        panelDefaults.writeEntry("offset", 0);
+      '';
       widgets = [
         {
           kickoff = {
@@ -15,10 +31,13 @@
           };
         }
         {
-          iconTasks.launchers = [
-            "applications:org.kde.dolphin.desktop"
-            "applications:floorp.desktop"
-          ];
+          iconTasks = {
+            launchers = [
+              "applications:org.kde.dolphin.desktop"
+              "applications:floorp.desktop"
+            ];
+            appearance.iconSpacing = "small";
+          };
         }
         "org.kde.plasma.pager"
         "org.kde.plasma.marginsseparator"

@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./shortcuts.nix
@@ -21,6 +21,13 @@
       edgeBarrier = 0;
       cornerBarrier = false;
       effects.shakeCursor.enable = false;
+      effects.desktopSwitching.animation = "fade";
+    };
+
+    krunner.position = "center";
+    kwin.virtualDesktops = {
+      number = 4;
+      animation = "fade";
     };
 
     configFile = {
@@ -30,10 +37,9 @@
         LockOnResume = true;
       };
 
-      kwinrc.Desktops.Number = {
-        value = 4;
-        immutable = true;
-      };
+      kwinrc.TabBox.DelayTime = 0;
+      kwinrc.TabBox.LayoutName = "big_icons";
+      kwinrc.TabBoxAlternative.LayoutName = "big_icons";
 
       kwinrc."Effect-overview" = {
         BorderActivate = {
@@ -42,5 +48,21 @@
         };
       };
     };
+  };
+
+  systemd.user.services.krunner-daemon = {
+    Unit = {
+      Description = "Start KRunner daemon";
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.kdePackages.plasma-workspace}/bin/krunner --daemon";
+      RemainAfterExit = true;
+    };
+
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 }

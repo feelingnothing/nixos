@@ -2,11 +2,26 @@
 {
   programs.plasma.panels = [
     {
-      alignment = "center";
       location = "right";
-      hiding = "dodgewindows";
-      lengthMode = "fit";
-      height = 300;
+      extraSettings = ''
+        panel.height = 300;
+        panel.alignment = "center";
+        panel.hiding = "dodgewindows";
+        panel.lengthMode = "fit";
+        panel.offset = 0;
+        panel.floating = false;
+
+        const panelViews = new ConfigFile("plasmashellrc", "PlasmaViews");
+        const panelView = new ConfigFile(panelViews, "Panel " + panel.id);
+        const panelDefaults = new ConfigFile(panelView, "Defaults");
+
+        panelView.writeEntry("alignment", 132);
+        panelView.writeEntry("panelVisibility", 2);
+        panelView.writeEntry("panelLengthMode", 1);
+        panelView.writeEntry("floating", 0);
+        panelDefaults.writeEntry("thickness", 300);
+        panelDefaults.writeEntry("offset", 0);
+      '';
 
       widgets = [
         {

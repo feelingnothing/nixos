@@ -123,7 +123,7 @@ let
     }
 
     #frosted-glass.with-chipbar.ytd-app {
-        height: 56px;
+        height: unset;
     }
 
     #voice-search-button.ytd-masthead {
