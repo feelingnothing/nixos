@@ -1,14 +1,19 @@
-{ lib, config, ... }:
+{ lib, osConfig, ... }:
 let
-  alias = builtins.head (lib.splitString "." config.sops.placeholder.server);
+  server = osConfig.sops.placeholder.server;
+  alias = builtins.head (lib.splitString "." server);
 in
 {
+  xdg.configFile."environment.d/10-ssh-agent.conf".text = ''
+    SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
+  '';
+
   services.ssh-agent.enable = true;
 
   programs.ssh = {
     enable = true;
     matchBlocks."${alias}" = {
-      hostname = config.sops.placeholder.server;
+      hostname = server;
       user = "root";
     };
   };

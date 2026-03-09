@@ -20,6 +20,9 @@
     kwin = {
       edgeBarrier = 0;
       cornerBarrier = false;
+      effects = {
+        shakeCursor.enable = false;
+      };
     };
 
     configFile = {
