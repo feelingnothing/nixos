@@ -9,11 +9,11 @@ let
     params:
     lib.strings.toJSON (
       lib.recursiveUpdate params {
-        server = config.sops.placeholder."hysteria/server";
+        server = "${config.sops.placeholder.server}:443";
         auth = config.sops.placeholder."hysteria/password";
 
         tls = {
-          sni = "server.redacted.invalid";
+          sni = config.sops.placeholder.server;
           insecure = false;
         };
 
@@ -47,12 +47,6 @@ let
 in
 {
   sops.secrets = {
-    "hysteria/server" = {
-      owner = "root";
-      group = "root";
-      mode = "0400";
-    };
-
     "hysteria/password" = {
       owner = "root";
       group = "root";

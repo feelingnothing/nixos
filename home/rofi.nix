@@ -1,18 +1,11 @@
 {
-  config,
   pkgs,
   ...
 }:
-let
-  inherit (config.lib.formats.rasi) mkLiteral;
-in
 {
   programs.rofi = {
     enable = true;
-
     terminal = "${pkgs.alacritty}/bin/alacritty";
-    location = "top";
-    yoffset = 20;
   };
 
   xdg.desktopEntries.rofi = {
@@ -28,7 +21,10 @@ in
   };
 
   programs.plasma.shortcuts."services/rofi.desktop" = {
-    _launch = [ "Meta+Q" "Metz" ];
+    _launch = [
+      "Meta+Q"
+      "Meta"
+    ];
     RunClipboard = "none";
   };
 }

@@ -10,14 +10,16 @@
     ./modules/alacritty.nix
     ./modules/spice-vdagent.nix
     ./floorp.nix
+    ./keepassxc.nix
+    ./ssh.nix
     ./rofi.nix
+    ./zed.nix
     ./plasma
   ];
 
   home.packages = with pkgs; [
-    vscodium
     nil
-    keepassxc
+    telegram-desktop
     alacritty
     nixfmt
     hysteria
