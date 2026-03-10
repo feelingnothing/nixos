@@ -4,11 +4,11 @@
   imports = [
     ./boot.nix
     ./networking.nix
+    ./bluetooth.nix
     ./locale.nix
     ./desktop.nix
     ./printing.nix
     ./audio.nix
-    ./virtualization.nix
     ./users.nix
     ./packages.nix
     ./nix.nix

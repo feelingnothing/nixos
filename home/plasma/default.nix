@@ -34,14 +34,17 @@
         LockOnResume = true;
       };
 
-      kwinrc.TabBox.DelayTime = 0;
-      kwinrc.TabBox.LayoutName = "big_icons";
-      kwinrc.TabBoxAlternative.LayoutName = "big_icons";
+      kwinrc = {
+        TabBox.DelayTime = 0;
+        TabBox.LayoutName = "big_icons";
+        TabBoxAlternative.LayoutName = "big_icons";
+        ModifierOnlyShortcuts.Meta = "org.kde.krunner,/App,,toggleDisplay";
 
-      kwinrc."Effect-overview" = {
-        BorderActivate = {
-          value = "";
-          immutable = true;
+        "Effect-overview" = {
+          BorderActivate = {
+            value = "";
+            immutable = true;
+          };
         };
       };
     };

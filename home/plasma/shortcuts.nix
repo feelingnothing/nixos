@@ -3,7 +3,6 @@
 {
   programs.plasma.shortcuts = {
     plasmashell = {
-      "activate application launcher" = "Alt+F1";
       "manage activities" = "none";
     };
 
